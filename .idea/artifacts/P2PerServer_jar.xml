@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="P2PerServer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/P2PerServer_jar</output-path>
+    <root id="archive" name="P2PerServer.jar">
+      <element id="module-output" name="P2PerServer" />
+      <element id="module-output" name="P2PerLib" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.0/c4ba5371a29ac9b2ad6129b1d39ea38750043eff/gson-2.8.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
