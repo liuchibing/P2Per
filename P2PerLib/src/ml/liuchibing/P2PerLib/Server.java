@@ -4,12 +4,9 @@ import com.sun.istack.internal.Nullable;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.SocketAddress;
-import java.net.SocketException;
-import java.time.LocalTime;
-import java.util.List;
+import java.net.*;
+import java.util.ArrayList;
+import java.util.UUID;
 
 import com.google.gson.*;
 
@@ -22,7 +19,7 @@ import com.google.gson.*;
 public class Server {
     private int localPort;
     private DatagramSocket socket;
-    private List<PeerInfo> peers;
+    private ArrayList<PeerInfo> peers;
     private Logger _logger;
 
     /**
@@ -36,10 +33,15 @@ public class Server {
         localPort = port;
 
         try {
-            socket = new DatagramSocket(localPort);
+            socket = new DatagramSocket(localPort, InetAddress.getLocalHost());
+            Log(InetAddress.getLocalHost().toString());
         } catch (SocketException e) {
             Log(e.toString());
+        } catch (UnknownHostException e) {
+            Log(e.toString());
         }
+
+        peers = new ArrayList<PeerInfo>();
     }
 
     /**
@@ -87,8 +89,51 @@ public class Server {
                     SendControlData(SharedCodes.COMMAND_REFUSE, null, packet.getSocketAddress());
                     return;
                 }
+                //初步分析数据
                 ControlData data = new ControlData(request);
-
+                //按Command内容进行响应
+                switch (data.command) {
+                    case SharedCodes.COMMAND_LOGIN: //客户端登录
+                        PeerInfo peer = new PeerInfo();
+                        peer.username = data.content.split("\\s")[0];
+                        peer.ip = packet.getAddress().toString();
+                        peer.port = packet.getPort();
+                        peer.uuid = UUID.fromString(data.content.split("\\s")[1]);
+                        peers.add(peer);
+                        SendControlData(SharedCodes.COMMAND_OK, "", packet.getSocketAddress());
+                        Log("Server: 收到客户端登录：" + packet.getAddress().toString() + ":" + packet.getPort());
+                        break;
+                    case SharedCodes.COMMAND_GET_PEER_BY_NAME://客户端通过用户名查询客户端
+                        Gson gson = new Gson();
+                        String name = data.content;
+                        ArrayList<String> results = new ArrayList<String>();
+                        for (PeerInfo item :
+                                peers) {
+                            if (item.username == name) {
+                                results.add(gson.toJson(item, PeerInfo.class));
+                            }
+                        }
+                        if (results.size() != 0) {
+                            String[] resultsArray = new String[results.size()];
+                            SendControlData(SharedCodes.COMMAND_OK, gson.toJson(results.toArray(resultsArray), String[].class), packet.getSocketAddress());
+                        }
+                        break;
+                    case SharedCodes.COMMAND_GET_PEER_BY_UUID://客户端通过UUID查询客户端
+                        Gson gsonU = new Gson();
+                        String uuid = data.content;
+                        ArrayList<String> resultsU = new ArrayList<String>();
+                        for (PeerInfo item :
+                                peers) {
+                            if (item.uuid.toString() == uuid) {
+                                resultsU.add(gsonU.toJson(item, PeerInfo.class));
+                            }
+                        }
+                        if (resultsU.size() != 0) {
+                            String[] resultsArray = new String[resultsU.size()];
+                            SendControlData(SharedCodes.COMMAND_OK, gsonU.toJson(resultsU.toArray(resultsArray), String[].class), packet.getSocketAddress());
+                        }
+                        break;
+                }
             } catch (UnsupportedEncodingException e) {
                 Log("Server: 收到未知数据包。");
             }
@@ -96,7 +141,6 @@ public class Server {
     }
 
     private boolean SendControlData(String command, String content, SocketAddress destination) {
-        boolean result = false;
 
         StringBuilder sb = new StringBuilder(SharedCodes.CURRENT_VERSION_HEAD);
         sb.append(" ");
@@ -116,8 +160,10 @@ public class Server {
             socket.send(new DatagramPacket(data, data.length, destination));
         } catch (IOException e) {
             Log(e.toString());
+            return false;
         }
-        return result;
+
+        return true;
     }
 
     private void Log(String msg) {

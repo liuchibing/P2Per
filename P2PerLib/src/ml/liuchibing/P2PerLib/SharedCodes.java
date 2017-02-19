@@ -12,7 +12,8 @@ public class SharedCodes {
     public static final String COMMAND_REFUSE = "REFUSE";
 
     public static final String COMMAND_LOGIN = "LOGIN";
-    public static final String COMMAND_GET_PEERS = "GET_PEERS";
+    public static final String COMMAND_GET_PEER_BY_NAME = "GET_PEER_BY_NAME";
+    public static final String COMMAND_GET_PEER_BY_UUID = "GET_PEER_BY_UUID";
 
     public static final String REGEX_PACKET_HAS_CONTENT = "\\{.+\\}";
 

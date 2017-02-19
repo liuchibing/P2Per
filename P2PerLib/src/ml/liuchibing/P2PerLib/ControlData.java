@@ -11,11 +11,9 @@ public class ControlData {
 
     public ControlData(String origin) {
         //截取Command
-        command = origin.substring(SharedCodes.CURRENT_VERSION_HEAD.length() + 1, (origin.matches(SharedCodes.REGEX_PACKET_HAS_CONTENT)) ? origin.indexOf("{") : origin.length() - 1);
-        //截取JSON格式的Content
-        content = "";
-        if (origin.matches(SharedCodes.REGEX_PACKET_HAS_CONTENT)) {
-            content = origin.substring(origin.indexOf("{"), origin.lastIndexOf("}"));
-        }
+        String headless = origin.replace(SharedCodes.CURRENT_VERSION_HEAD, "").trim();
+        command = headless.split("\\s")[0].trim();
+        //截取Content
+        content = headless.replace(command, "").trim();
     }
 }

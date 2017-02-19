@@ -11,7 +11,7 @@ public class Main {
         Server server = new Server(PORT, new Logger() {
             @Override
             public void Log(String msg) {
-                System.out.print(LocalTime.now().toString() + ": " + msg);
+                System.out.print(LocalTime.now().toString() + ": " + msg + "\n");
             }
         });
         server.Start();

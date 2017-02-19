@@ -8,7 +8,7 @@ import java.util.UUID;
  */
 public class PeerInfo {
     public UUID uuid;
-    public String Username;
+    public String username;
     public String ip;
     public int port;
 }
