@@ -40,6 +40,7 @@ public class Client {
             byte[] buffer = (SharedCodes.COMMAND_LOGIN + " " + _username).getBytes("utf-8");
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
             packet.setSocketAddress(new InetSocketAddress(_serverIp, 42800));
+            Log(new InetSocketAddress(_serverIp, 42800).toString());
             socket.send(packet);
             while (true) {
                 byte[] buffer2 = new byte[1024 * 1024 * 2];

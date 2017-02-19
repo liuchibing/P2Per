@@ -33,10 +33,11 @@ public class Server {
         localPort = port;
 
         try {
-            socket = new DatagramSocket(localPort, InetAddress.getLocalHost());
-            Log(InetAddress.getLocalHost().toString());
+            InetSocketAddress address = new InetSocketAddress(InetAddress.getLocalHost(), localPort);
+            socket = new DatagramSocket(address);
+            Log(address.toString());
         } catch (SocketException e) {
-            Log(e.toString());
+
         } catch (UnknownHostException e) {
             Log(e.toString());
         }
@@ -86,7 +87,7 @@ public class Server {
                 //拒绝不支持的版本号
                 if (!request.startsWith(SharedCodes.CURRENT_VERSION_HEAD)) {
                     Log("Server: 客户端版本号不受支持.");
-                    SendControlData(SharedCodes.COMMAND_REFUSE, null, packet.getSocketAddress());
+                    SendControlData(SharedCodes.COMMAND_REFUSE, null, (InetSocketAddress)packet.getSocketAddress());
                     return;
                 }
                 //初步分析数据
@@ -100,7 +101,7 @@ public class Server {
                         peer.port = packet.getPort();
                         peer.uuid = UUID.fromString(data.content.split("\\s")[1]);
                         peers.add(peer);
-                        SendControlData(SharedCodes.COMMAND_OK, "", packet.getSocketAddress());
+                        SendControlData(SharedCodes.COMMAND_OK, "", (InetSocketAddress)packet.getSocketAddress());
                         Log("Server: 收到客户端登录：" + packet.getAddress().toString() + ":" + packet.getPort());
                         break;
                     case SharedCodes.COMMAND_GET_PEER_BY_NAME://客户端通过用户名查询客户端
@@ -115,7 +116,7 @@ public class Server {
                         }
                         if (results.size() != 0) {
                             String[] resultsArray = new String[results.size()];
-                            SendControlData(SharedCodes.COMMAND_OK, gson.toJson(results.toArray(resultsArray), String[].class), packet.getSocketAddress());
+                            SendControlData(SharedCodes.COMMAND_OK, gson.toJson(results.toArray(resultsArray), String[].class), (InetSocketAddress)packet.getSocketAddress());
                         }
                         break;
                     case SharedCodes.COMMAND_GET_PEER_BY_UUID://客户端通过UUID查询客户端
@@ -130,7 +131,7 @@ public class Server {
                         }
                         if (resultsU.size() != 0) {
                             String[] resultsArray = new String[resultsU.size()];
-                            SendControlData(SharedCodes.COMMAND_OK, gsonU.toJson(resultsU.toArray(resultsArray), String[].class), packet.getSocketAddress());
+                            SendControlData(SharedCodes.COMMAND_OK, gsonU.toJson(resultsU.toArray(resultsArray), String[].class), (InetSocketAddress)packet.getSocketAddress());
                         }
                         break;
                 }
@@ -140,7 +141,7 @@ public class Server {
         }
     }
 
-    private boolean SendControlData(String command, String content, SocketAddress destination) {
+    private boolean SendControlData(String command, String content, InetSocketAddress destination) {
 
         StringBuilder sb = new StringBuilder(SharedCodes.CURRENT_VERSION_HEAD);
         sb.append(" ");
