@@ -36,9 +36,7 @@ public class Server {
             InetSocketAddress address = new InetSocketAddress(InetAddress.getLocalHost(), localPort);
             socket = new DatagramSocket(address);
             Log(address.toString());
-        } catch (SocketException e) {
-
-        } catch (UnknownHostException e) {
+        } catch (SocketException | UnknownHostException e) {
             Log(e.toString());
         }
 
@@ -58,10 +56,10 @@ public class Server {
      */
     public void Start() {
         try {
-            byte[] buffer = new byte[1024 * 1024 * 2];//2M buffer
-            DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
             Log("Server: 进入消息循环");
             while (true) {
+                byte[] buffer = new byte[1024 * 1024 * 2];//2M buffer
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 socket.receive(packet);
                 //在新线程里与Client交互，主线程继续监听
                 new Thread(() -> {
@@ -87,7 +85,7 @@ public class Server {
                 //拒绝不支持的版本号
                 if (!request.startsWith(SharedCodes.CURRENT_VERSION_HEAD)) {
                     Log("Server: 客户端版本号不受支持.");
-                    SendControlData(SharedCodes.COMMAND_REFUSE, null, (InetSocketAddress)packet.getSocketAddress());
+                    SendControlData(SharedCodes.COMMAND_REFUSE, null, (InetSocketAddress) packet.getSocketAddress());
                     return;
                 }
                 //初步分析数据
@@ -101,7 +99,7 @@ public class Server {
                         peer.port = packet.getPort();
                         peer.uuid = UUID.fromString(data.content.split("\\s")[1]);
                         peers.add(peer);
-                        SendControlData(SharedCodes.COMMAND_OK, "", (InetSocketAddress)packet.getSocketAddress());
+                        SendControlData(SharedCodes.COMMAND_OK, "", (InetSocketAddress) packet.getSocketAddress());
                         Log("Server: 收到客户端登录：" + packet.getAddress().toString() + ":" + packet.getPort());
                         break;
                     case SharedCodes.COMMAND_GET_PEER_BY_NAME://客户端通过用户名查询客户端
@@ -116,7 +114,7 @@ public class Server {
                         }
                         if (results.size() != 0) {
                             String[] resultsArray = new String[results.size()];
-                            SendControlData(SharedCodes.COMMAND_OK, gson.toJson(results.toArray(resultsArray), String[].class), (InetSocketAddress)packet.getSocketAddress());
+                            SendControlData(SharedCodes.COMMAND_OK, gson.toJson(results.toArray(resultsArray), String[].class), (InetSocketAddress) packet.getSocketAddress());
                         }
                         break;
                     case SharedCodes.COMMAND_GET_PEER_BY_UUID://客户端通过UUID查询客户端
@@ -131,7 +129,7 @@ public class Server {
                         }
                         if (resultsU.size() != 0) {
                             String[] resultsArray = new String[resultsU.size()];
-                            SendControlData(SharedCodes.COMMAND_OK, gsonU.toJson(resultsU.toArray(resultsArray), String[].class), (InetSocketAddress)packet.getSocketAddress());
+                            SendControlData(SharedCodes.COMMAND_OK, gsonU.toJson(resultsU.toArray(resultsArray), String[].class), (InetSocketAddress) packet.getSocketAddress());
                         }
                         break;
                 }
