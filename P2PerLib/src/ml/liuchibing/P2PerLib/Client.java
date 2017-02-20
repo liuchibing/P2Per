@@ -8,6 +8,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
+import java.util.UUID;
 
 /**
  * P2P客户端.
@@ -22,7 +23,7 @@ public class Client {
     private String _serverIp;
     private String _username;
 
-    public Client(String username, String serverIp, int port, @Nullable Logger logger) {
+    public Client(String username, UUID uuid, String serverIp, int port, @Nullable Logger logger) {
         if (logger != null) _logger = logger;
         localPort = port;
         _serverIp = serverIp;
@@ -31,24 +32,6 @@ public class Client {
         try {
             socket = new DatagramSocket(port);
         } catch (SocketException e) {
-            Log(e.toString());
-        }
-    }
-
-    public void Start() {
-        try {
-            byte[] buffer = (SharedCodes.COMMAND_LOGIN + " " + _username).getBytes("utf-8");
-            DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-            packet.setSocketAddress(new InetSocketAddress(_serverIp, 42800));
-            Log(new InetSocketAddress(_serverIp, 42800).toString());
-            socket.send(packet);
-            while (true) {
-                byte[] buffer2 = new byte[1024 * 1024 * 2];
-                DatagramPacket packet2 = new DatagramPacket(buffer2, buffer2.length);
-                socket.receive(packet2);
-                Log(new String(packet2.getData(), "utf-8"));
-            }
-        } catch (IOException e) {
             Log(e.toString());
         }
     }

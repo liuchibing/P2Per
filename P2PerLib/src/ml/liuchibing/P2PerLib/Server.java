@@ -2,6 +2,8 @@ package ml.liuchibing.P2PerLib;
 
 import com.sun.istack.internal.Nullable;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.*;
@@ -40,7 +42,7 @@ public class Server {
             Log(e.toString());
         }
 
-        peers = new ArrayList<PeerInfo>();
+        peers = new ArrayList<>();
     }
 
     /**
@@ -62,9 +64,7 @@ public class Server {
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 socket.receive(packet);
                 //在新线程里与Client交互，主线程继续监听
-                new Thread(() -> {
-                    Response(packet);
-                }).start();
+                new Thread(() -> Response(packet)).start();
             }
         } catch (IOException e) {
             Log(e.toString());
@@ -85,7 +85,11 @@ public class Server {
                 //拒绝不支持的版本号
                 if (!request.startsWith(SharedCodes.CURRENT_VERSION_HEAD)) {
                     Log("Server: 客户端版本号不受支持.");
-                    SendControlData(SharedCodes.COMMAND_REFUSE, null, (InetSocketAddress) packet.getSocketAddress());
+                    try {
+                        SharedCodes.SendControlData(SharedCodes.COMMAND_REFUSE, null, (InetSocketAddress) packet.getSocketAddress(), socket);
+                    } catch (IOException e) {
+                        Log(e.toString());
+                    }
                     return;
                 }
                 //初步分析数据
@@ -98,38 +102,66 @@ public class Server {
                         peer.ip = packet.getAddress().toString();
                         peer.port = packet.getPort();
                         peer.uuid = UUID.fromString(data.content.split("\\s")[1]);
-                        peers.add(peer);
-                        SendControlData(SharedCodes.COMMAND_OK, "", (InetSocketAddress) packet.getSocketAddress());
+                        //防止重复
+                        boolean hasLogged = false;
+                        for (PeerInfo item :
+                                peers) {
+                            if (item.uuid == peer.uuid) {
+                                hasLogged = true;
+                            }
+                        }
+                        if (!hasLogged) peers.add(peer);
+                        try {
+                            SharedCodes.SendControlData(
+                                    SharedCodes.COMMAND_OK, "", (InetSocketAddress) packet.getSocketAddress(),
+                                    socket);
+                        } catch (IOException e) {
+                            Log(e.toString());
+                        }
                         Log("Server: 收到客户端登录：" + packet.getAddress().toString() + ":" + packet.getPort());
+                        break;
+                    case SharedCodes.COMMAND_LOGOUT://客户端下线
+                        for (PeerInfo item :
+                                peers) {
+                            if (item.uuid.toString().equals(data.content)) peers.remove(item);
+                        }
                         break;
                     case SharedCodes.COMMAND_GET_PEER_BY_NAME://客户端通过用户名查询客户端
                         Gson gson = new Gson();
                         String name = data.content;
-                        ArrayList<String> results = new ArrayList<String>();
+                        ArrayList<String> results = new ArrayList<>();
                         for (PeerInfo item :
                                 peers) {
-                            if (item.username == name) {
+                            if (item.username.equals(name)) {
                                 results.add(gson.toJson(item, PeerInfo.class));
                             }
                         }
                         if (results.size() != 0) {
                             String[] resultsArray = new String[results.size()];
-                            SendControlData(SharedCodes.COMMAND_OK, gson.toJson(results.toArray(resultsArray), String[].class), (InetSocketAddress) packet.getSocketAddress());
+                            try {
+                                SharedCodes.SendControlData(SharedCodes.COMMAND_OK, gson.toJson(results.toArray(resultsArray), String[].class), (InetSocketAddress) packet.getSocketAddress(), socket);
+                            } catch (IOException e) {
+                                Log(e.toString());
+                            }
                         }
                         break;
                     case SharedCodes.COMMAND_GET_PEER_BY_UUID://客户端通过UUID查询客户端
                         Gson gsonU = new Gson();
                         String uuid = data.content;
-                        ArrayList<String> resultsU = new ArrayList<String>();
+                        ArrayList<String> resultsU = new ArrayList<>();
                         for (PeerInfo item :
                                 peers) {
-                            if (item.uuid.toString() == uuid) {
+                            if (item.uuid.toString().equals(uuid)) {
                                 resultsU.add(gsonU.toJson(item, PeerInfo.class));
                             }
                         }
                         if (resultsU.size() != 0) {
                             String[] resultsArray = new String[resultsU.size()];
-                            SendControlData(SharedCodes.COMMAND_OK, gsonU.toJson(resultsU.toArray(resultsArray), String[].class), (InetSocketAddress) packet.getSocketAddress());
+                            try {
+                                SharedCodes.SendControlData(SharedCodes.COMMAND_OK, gsonU.toJson(resultsU.toArray(resultsArray), String[].class), (InetSocketAddress) packet.getSocketAddress(), socket);
+                            } catch (IOException e) {
+                                Log(e.toString());
+                            }
                         }
                         break;
                 }
@@ -137,32 +169,6 @@ public class Server {
                 Log("Server: 收到未知数据包。");
             }
         }
-    }
-
-    private boolean SendControlData(String command, String content, InetSocketAddress destination) {
-
-        StringBuilder sb = new StringBuilder(SharedCodes.CURRENT_VERSION_HEAD);
-        sb.append(" ");
-        sb.append(command);
-        if (content != null) {
-            sb.append(" ");
-            sb.append(content);
-        }
-
-        try {
-            byte[] origin = sb.toString().getBytes("utf-8");
-            byte[] data = new byte[origin.length + 1];
-            data[0] = (byte) PacketType.Control.ordinal();
-            for (int i = 0; i < origin.length; i++) {
-                data[i + 1] = origin[i];
-            }
-            socket.send(new DatagramPacket(data, data.length, destination));
-        } catch (IOException e) {
-            Log(e.toString());
-            return false;
-        }
-
-        return true;
     }
 
     private void Log(String msg) {

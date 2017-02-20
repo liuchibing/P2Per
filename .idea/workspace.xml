@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b7da71c-ac72-4e81-9e1d-1231fa580165" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/P2PerClient_jar/P2PerClient.jar" afterPath="$PROJECT_DIR$/out/artifacts/P2PerClient_jar/P2PerClient.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/P2PerServer_jar/P2PerServer.jar" afterPath="$PROJECT_DIR$/out/artifacts/P2PerServer_jar/P2PerServer.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/P2PerLib/ml/liuchibing/P2PerLib/Server.class" afterPath="$PROJECT_DIR$/out/production/P2PerLib/ml/liuchibing/P2PerLib/Server.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Client.java" afterPath="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Client.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Server.java" afterPath="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Server.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/SharedCodes.java" afterPath="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/SharedCodes.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,12 +47,11 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1000">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="425">
+              <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1707#1708#0" expanded="true" />
-                <element signature="e#1760#1761#0" expanded="true" />
+                <element signature="e#978#979#0" expanded="false" />
+                <element signature="e#1031#1032#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -61,13 +60,33 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1500">
-              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state relative-caret-position="237">
+              <caret line="160" column="79" lean-forward="true" selection-start-line="160" selection-start-column="79" selection-end-line="160" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3547#3555#0" expanded="true" />
-                <element signature="e#4448#4456#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SharedCodes.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/SharedCodes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PacketType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/PacketType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,10 +129,10 @@
         <option value="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/PacketType.java" />
         <option value="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/ControlData.java" />
         <option value="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/PeerInfo.java" />
-        <option value="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/SharedCodes.java" />
         <option value="$PROJECT_DIR$/P2PerServer/src/ml/liuchibing/P2PerServer/Main.java" />
-        <option value="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Client.java" />
         <option value="$PROJECT_DIR$/P2PerClient/src/ml/liuchibing/P2PerClient/Main.java" />
+        <option value="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Client.java" />
+        <option value="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/SharedCodes.java" />
         <option value="$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Server.java" />
       </list>
     </option>
@@ -143,7 +162,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,7 +280,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -280,7 +299,7 @@
       <recent name="C:\Users\charlie\GitHub\P2Per\P2PerServer" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Client">
     <configuration default="false" name="Client" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -540,8 +559,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.Server" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Client" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Client" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -568,7 +587,6 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -580,7 +598,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3465026" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36463732" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32966322" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -592,6 +610,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32859176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -601,15 +620,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Server.java</url>
-          <line>79</line>
-          <properties />
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -636,8 +647,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3547#3555#0" expanded="true" />
-            <element signature="e#4448#4456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -703,8 +712,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3547#3555#0" expanded="true" />
-            <element signature="e#4448#4456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -770,8 +777,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3547#3555#0" expanded="true" />
-            <element signature="e#4448#4456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -829,8 +834,6 @@
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3547#3555#0" expanded="true" />
-            <element signature="e#4448#4456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -930,22 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/PacketType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/SharedCodes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/PeerInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -989,18 +976,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#352#353#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1707#1708#0" expanded="true" />
-            <element signature="e#1760#1761#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1054,14 +1029,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Server.java">
+    <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/PacketType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="175">
+          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding>
+            <element signature="e#978#979#0" expanded="false" />
+            <element signature="e#1031#1032#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/SharedCodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3547#3555#0" expanded="true" />
-            <element signature="e#4448#4456#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/P2PerLib/src/ml/liuchibing/P2PerLib/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="160" column="79" lean-forward="true" selection-start-line="160" selection-start-column="79" selection-end-line="160" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
