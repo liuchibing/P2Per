@@ -8,6 +8,11 @@
         <option name="gradleJvm" value="1.8" />
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ControlledUDP" />
+        <option name="gradleJvm" value="1.8" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/P2PerClient" />
         <option name="gradleJvm" value="1.8" />
