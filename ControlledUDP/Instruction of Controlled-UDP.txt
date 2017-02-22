@@ -18,10 +18,10 @@ Control-Message:
     ACK = 2
     FIN = 3
 Data of hand-shaking:
-+---------------------------+--------------
-| Expected-Session-ID: UInt |
-|        4 bytes            |
-+---------------------------+-------------
++---------------------------+----------------------------+
+| Expected-Session-ID: UInt | Maximum Segment Size: UInt |
+|          4 bytes          |           4 bytes          |
++---------------------------+----------------------------+
 
 >>Connection-Establish:
 Step.0 If NAT Traversal required, do the traversal.

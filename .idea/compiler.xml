@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="ControlledUDP_main" target="1.5" />
+      <module name="ControlledUDP_test" target="1.5" />
+      <module name="P2PerClient_main" target="1.5" />
+      <module name="P2PerClient_test" target="1.5" />
+      <module name="P2PerLib_main" target="1.5" />
+      <module name="P2PerLib_test" target="1.5" />
+      <module name="P2PerServer_main" target="1.5" />
+      <module name="P2PerServer_test" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

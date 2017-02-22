@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="P2PerClient:main" external.linked.project.path="$MODULE_DIR$/../../P2PerClient" external.root.project.path="$MODULE_DIR$/../../P2PerClient" external.system.id="GRADLE" external.system.module.group="Liuchibing" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../../P2PerClient/build/classes/main" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../P2PerClient/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../P2PerClient/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../P2PerClient/src/main/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
