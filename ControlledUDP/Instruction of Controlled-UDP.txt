@@ -6,10 +6,10 @@ Controlled-UDP is a Protocol based on UDP.It add the traffic-control feature to 
 It run above the layer of UDP and TCP, under the Application Layer.
 
 >>Packet Structure:
-+------------------+--------------------+-----------------------+--------------+
-| Session-ID: UInt | Packet-Count: UInt | Control-Message: Byte | Data: Byte[] |
-|     4 bytes      |      4 bytes       |         1 byte        |              |
-+------------------+--------------------+-----------------------+--------------+
++-----------------+----------------------+-----------------------+--------------+
+| Session-ID: Int | Sequence Number: Int | Control-Message: Byte | Data: Byte[] |
+|     4 bytes     |       4 bytes        |         1 byte        |              |
++-----------------+----------------------+-----------------------+--------------+
 
 Comment: Session-ID = 0 when during hand-shaking.
 Control-Message:
